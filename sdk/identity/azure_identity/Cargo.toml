@@ -15,7 +15,7 @@ edition.workspace = true
 [dependencies]
 async-lock.workspace = true
 async-trait.workspace = true
-azure_core.workspace = true
+azure_core = { workspace = true, default-features = false, features = ["reqwest_rustls"] }
 futures.workspace = true
 oauth2.workspace = true
 openssl = { workspace = true, optional = true }
@@ -39,7 +39,7 @@ tracing-subscriber.workspace = true
 [features]
 default = ["reqwest"]
 reqwest = ["azure_core/reqwest"]
-reqwest_rustls = ["azure_core/reqwest_rustls"]
+reqwest_rustls = []
 tokio = ["azure_core/tokio"]
 client_certificate = ["openssl"]
 
