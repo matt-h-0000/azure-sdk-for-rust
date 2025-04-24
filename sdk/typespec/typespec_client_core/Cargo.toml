@@ -19,7 +19,7 @@ futures.workspace = true
 pin-project.workspace = true
 quick-xml = { workspace = true, optional = true }
 rand.workspace = true
-reqwest = { workspace = true, optional = true, default-features = false, features = ["derive"] }
+reqwest = { workspace = true, optional = true, default-features = false }
 serde.workspace = true
 serde_json.workspace = true
 time.workspace = true
@@ -51,7 +51,10 @@ json = ["typespec/json"]
 reqwest = ["reqwest/native-tls"]
 reqwest_deflate = ["reqwest/deflate"]
 reqwest_gzip = ["reqwest/gzip"]
-reqwest_rustls = ["reqwest/rustls-tls"]
+reqwest_rustls = [
+    "dep:reqwest",
+    "reqwest?/rustls-tls-native-roots",
+]
 test = [] # Enables extra tracing including error bodies that may contain PII.
 tokio = ["tokio/fs", "tokio/sync", "tokio/time", "tokio/io-util"]
 xml = ["dep:quick-xml"]
