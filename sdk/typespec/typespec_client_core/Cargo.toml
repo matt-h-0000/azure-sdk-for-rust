@@ -19,7 +19,7 @@ futures.workspace = true
 pin-project.workspace = true
 quick-xml = { workspace = true, optional = true }
 rand.workspace = true
-reqwest = { workspace = true, optional = true }
+reqwest = { workspace = true, optional = true, default-features = false }
 serde.workspace = true
 serde_json.workspace = true
 time.workspace = true
