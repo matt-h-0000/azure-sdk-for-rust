@@ -23,7 +23,7 @@ pin-project.workspace = true
 serde.workspace = true
 time.workspace = true
 tracing.workspace = true
-typespec_client_core = { workspace = true, features = ["derive"] }
+typespec_client_core = { workspace = true, default-features = false, features = ["derive", "reqwest_rustls"] }
 url.workspace = true
 
 [dev-dependencies]
