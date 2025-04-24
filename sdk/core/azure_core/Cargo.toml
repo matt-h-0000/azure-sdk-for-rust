@@ -27,7 +27,7 @@ sha2 = { workspace = true, optional = true }
 tokio = { workspace = true, optional = true }
 tracing.workspace = true
 typespec = { workspace = true, features = ["http", "json"] }
-typespec_client_core = { workspace = true, features = ["http", "json"] }
+typespec_client_core = { workspace = true, default-features = false, features = ["http", "json"] }
 
 [build-dependencies]
 rustc_version.workspace = true
@@ -53,7 +53,10 @@ hmac_rust = ["dep:sha2", "dep:hmac"]
 reqwest = ["typespec_client_core/reqwest"]
 reqwest_deflate = ["typespec_client_core/reqwest_deflate"]
 reqwest_gzip = ["typespec_client_core/reqwest_gzip"]
-reqwest_rustls = ["typespec_client_core/reqwest_rustls"]
+reqwest_rustls = [
+    "dep:typespec_client_core",
+    "typespec_client_core?/reqwest_rustls",
+]
 test = ["typespec_client_core/test"]
 tokio = ["dep:tokio", "tokio/process", "typespec_client_core/tokio"]
 xml = ["typespec_client_core/xml"]
